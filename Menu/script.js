@@ -49,7 +49,7 @@ function calc() {
 }
 
 function book() {
-    const name = document.getElementById("name").value.trim();
+    const name = document.getElementById("name").value.trim().toUpperCase();
     const age = document.getElementById("age").value;
     const dur = document.getElementById("dur").value;
     const total = document.getElementById("total").innerText;
@@ -60,6 +60,7 @@ function book() {
     }
 
     const data = {
+        id: Math.floor(Math.random() * 10000),
         name,
         age,
         console: selectedConsole.name,
@@ -106,8 +107,10 @@ function renderOrders() {
 }
 
 function removeOrder(i) {
-    orders.splice(i, 1);
-    renderOrders();
+    if (window.confirm("Yakin ingin membatalkan pesanan ini?")) {
+        orders.splice(i, 1);
+        renderOrders();
+    }
 }
 
 function edit(i) {
@@ -128,12 +131,12 @@ function edit(i) {
     });
 }
 
-function confirm() {
+function confirmOrder() {
     if (orders.length === 0) return;
 
     const history = document.getElementById("orders");
 
-    const newOrders = orders.map((o, i) => `
+    const newOrders = orders.map((o) => `
     <div class="order-item">
         <p><b>${o.name}</b></p>
         <p>${o.console} - ${o.room}</p>
