@@ -60,7 +60,7 @@ function book() {
     }
 
     const data = {
-        id: Math.floor(Math.random() * 10000),
+        id: Date.now() + Math.floor(Math.random() * 1000), // ✅ ID unik
         name,
         age,
         console: selectedConsole.name,
@@ -138,7 +138,7 @@ function confirmOrder() {
 
     const newOrders = orders.map((o) => `
     <div class="order-item">
-        <p><b>${o.name}</b></p>
+        <p><b>#${o.id} - ${o.name}</b></p>
         <p>${o.console} - ${o.room}</p>
         <p>${o.duration} jam</p>
         <p>${o.total}</p>
@@ -149,7 +149,8 @@ function confirmOrder() {
     </div>
     `).join("");
 
-    history.innerHTML += newOrders;
+    history.innerHTML = "";
+history.innerHTML = newOrders;
 
     orders.length = 0;
     renderOrders();
