@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental GameBro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-box">
+            <div>
+                <h1 class="title">
+                    RENTAL <span style="color: #60a5fa;">GAMEBRO</span>
+                </h1>
+                <p class="sub">Latest Generation of Playstation Consoles</p>
+            </div>
+
+            <div class="right">
+                <div class="txt-sm">Hourly Rates</div>
+                <div class="row">
+                    <span class="col1">PS3: 10K</span>
+                    <span class="col2">PS4: 15K</span>
+                    <span class="col3">PS5: 25K</span>
+                    <span class="col4">PC: 18K</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+
+        <section class="panel">
+            <h2>Booking</h2>
+
+            <form>
+                <div class="grid">
+                    <div class="field">
+                        <label class="lbl">Name</label>
+                        <input type="text" class="inp" id="name" placeholder="Nama">
+                    </div>
+
+                    <br>
+
+                    <div class="field">
+                        <label class="lbl">Age</label>
+                        <input type="number" class="inp" id="age" placeholder="Umur">
+                    </div>
+                </div>
+
+                <div class="sec">
+                    <div class="head">Select Console</div>
+                    <div class="choices console">
+                        <div class="opt opt1" onclick="pickConsole(this,'PS3',5000)">
+                            PS3<br><small>Rp 5K/jam</small>
+                        </div>
+                        <div class="opt opt2" onclick="pickConsole(this,'PS4',10000)">
+                            PS4<br><small>Rp 10K/jam</small>
+                        </div>
+                        <div class="opt opt3" onclick="pickConsole(this,'PS5',20000)">
+                            PS5<br><small>Rp 20K/jam</small>
+                        </div>
+                        <div class="opt opt4" onclick="pickConsole(this,'PC',10000)">
+                            PC<br><small>Rp 10K/jam</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sec">
+                    <div class="head">Select Room</div>
+                    <div class="choices room">
+                        <div class="opt" onclick="pickRoom(this,'Normal',0)">Normal</div>
+                        <div class="opt" onclick="pickRoom(this,'VIP',0.2)">VIP</div>
+                        <div class="opt" onclick="pickRoom(this,'Deluxe',0.5)">Deluxe</div>
+                    </div>
+                </div>
+
+                <div class="time-row">
+                    <div class="field">
+                        <label class="lbl">Start Time</label>
+                        <input type="datetime-local" class="inp" id="start">
+                    </div>
+
+                    <br>
+
+                    <div class="field">
+                        <label class="lbl">Duration</label>
+                        <input type="number" class="inp" id="dur" value="2" oninput="calc()">
+                    </div>
+                </div>
+
+                <div class="price">
+                    <div class="price-lbl">Total Price</div>
+                    <div class="price-tot" id="total">Rp 0</div>
+                    <div class="time-end" id="end">Ends at: -</div>
+                </div>
+
+                <button type="button" class="btn" onclick="book()">Booking Tempat</button>
+            </form>
+
+            <div class="current" id="current" style="display:none">
+                <div class="note">
+                    <h3>Current Order</h3>
+                    <div id="preview"></div>
+                    <button class="btn-ok" onclick="confirm()">Confirm Order</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="side">
+            <div class="content">
+                <div class="tabs">
+                    <button class="tab active">Order</button>
+                </div>
+
+                <div class="tab-box">
+                    <div id="cart">
+
+                        <div class="cart-list" id="cartList">
+                            <div class="empty">
+                                <span class="empty-txt">Belum ada pemesanan</span>
+                            </div>
+                        </div>
+
+                        <div class="cart-btns" id="cartBtns">
+                            <button class="btn-yes" onclick="confirm()">Confirm Order</button>
+                        </div>
+
+                        <div class="history" id="history">
+                            <div class="history-head">
+                                <span class="history-title">Recent order</span>
+                                <span class="history-dot"></span>
+                            </div>
+
+                            <div class="orders" id="orders">
+                                <div class="orders-empty">
+                                    <p>Belum ada pemesanan</p>
+                                    <button class="btn-update" id="updateBtn" onclick="applyUpdate()" style="display:none;">
+                                        Update Pesanan
+                                    </button>
+                                </div>
+
+                                <div class="editing" id="editing" style="display:none">
+                                    Ganti pesanan #<span id="editId"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+    <footer class="ft">
+        <p>&copy; 2026 GameBro. Kelompok 7.</p>
+    </footer>
+
+</body>
+</html>
