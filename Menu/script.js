@@ -60,7 +60,7 @@ function book() {
     }
 
     const data = {
-        id: Date.now() + Math.floor(Math.random() * 1000), // ✅ ID unik
+        id: Date.now() + Math.floor(Math.random() * 1000),
         name,
         age,
         console: selectedConsole.name,
